@@ -5,7 +5,7 @@ import BlankLayout from './BlankLayout';
 
 const Routes = () => {
     return (
-        <Router>
+        <Router basename="/chiverio-app">
             <RouterRoutes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<Home />} />
