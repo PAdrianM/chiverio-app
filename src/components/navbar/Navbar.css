@@ -1,105 +1,230 @@
-/* --- Estilos del Navbar --- */
-:root {
-    --color-primary: #0a0e2a;
-    --color-secondary: #5a3c9e;
-    --color-accent: #00d4ff;
-    --color-light: #ffffff;
-    --color-dark: #2c2f4a;
-}
-
-/* Encabezado (Header) */
+/* --- Encabezado --- */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background-color: rgba(10, 14, 42, 0.8);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 5%;
+  background-color: rgba(10, 14, 42, 0.95);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
-.header .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    text-transform: uppercase;
+/* IZQUIERDA (logo + brand) */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Menú de Navegación */
-.header .nav-menu {
-    display: flex;
-    gap: 2rem;
+.logo {
+  font-size: 1.3rem;
 }
 
-.header .nav-menu a {
-    color: var(--color-light);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-light);
 }
 
-.header .nav-menu a:hover {
-    color: var(--color-accent);
+/* LINKS CENTRALES */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
 }
 
-.header .cta-button {
-    padding: 0.5rem 1rem;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+.navbar-links li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--color-light);
+  transition: color 0.3s;
 }
 
-.header .cta-button:hover {
-    background-color: var(--color-light);
+.navbar-links li a:hover {
+  color: var(--color-accent);
 }
 
-/* Estilos del botón del menú móvil */
+/* DERECHA (buscador + carrito) */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Caja de búsqueda */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-dark);
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+}
+
+.search-box i {
+  margin-right: 6px;
+  color: var(--color-accent);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-light);
+  font-size: 0.9rem;
+}
+
+/* Botón del carrito */
+.cart-btn {
+  background-color: var(--color-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  color: var(--color-light);
+  transition: background-color 0.3s;
+}
+
+.cart-btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* --- MÓVIL --- */
 .menu-toggle {
-    display: none; /* Oculto en escritorio */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
-    z-index: 1001;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
 }
 
 .menu-toggle .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--color-light);
-    margin: 5px auto;
-    transition: all 0.3s ease-in-out;
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-light);
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Media Queries para responsivo */
-@media (max-width: 768px) {
-    .header .nav-menu {
-        display: none; /* OCULTA EL MENÚ POR DEFECTO */
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-        width: 100%;
-        background-color: var(--color-dark);
-        padding: 1rem 0;
-        margin-top: 1rem;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-    }
+/* Menú lateral (oculto por defecto en móvil) */
+.nav-menu.side {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100vh;
+  background-color: var(--color-dark);
+  padding: 80px 20px;
+  flex-direction: column;
+  transition: left 0.3s ease;
+}
 
-    .header .nav-menu.active {
-        display: flex; /* MUESTRA EL MENÚ CUANDO LA CLASE 'active' ESTÁ PRESENTE */
-    }
-    
-    .menu-toggle {
-        display: block; /* Muestra el botón del menú en móvil */
-    }
+.nav-menu.side.active {
+  left: 0;
+}
+
+/* --- Animación hamburguesa a X --- */
+.menu-toggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- Responsive --- */
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 1rem 5%;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    display: none; /* ocultar en móvil */
+  }
+
+  /* Menú lateral (nuevo estilo) */
+  .nav-menu.side {
+    position: fixed;
+    top: 0;
+    left: -100%; /* oculto */
+    width: 70%;
+    height: 100vh;
+    background-color: var(--color-dark);
+    padding: 80px 20px 20px;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    gap: 15px;
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-menu.side.active {
+    left: 0; /* aparece */
+  }
+
+  .navbar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar-links li a {
+    display: block;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.05); /* leve contraste */
+    border-radius: 5px;
+    text-align: center;
+    color: var(--color-light);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-links li a:hover {
+    background-color: var(--color-accent); /* del theme.css */
+    color: var(--color-primary); /* contraste texto */
+  }
+
+  /* ----------------------------- */
+  /* Versión anterior (comentada)
+  
+  .nav-menu {
+    display: none; 
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    width: 100%;
+    background-color: var(--color-dark);
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+  ----------------------------- */
+
+  .nav-menu.desktop {
+    display: none;
+  }
+
+  .navbar-right {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }

@@ -1,0 +1,35 @@
+/* Reset general */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* Evita scroll horizontal */
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  line-height: 1.6;
+}
+
+.layout-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --color-primary: #0a0e2a;
+  --color-secondary: #5a3c9e;
+  --color-accent: #00d4ff;
+  --color-light: #ffffff;
+  --color-dark: #2c2f4a;
+}

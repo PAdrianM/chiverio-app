@@ -1,5 +1,5 @@
-import './layout.css';
-import { Navbar } from './components/navbar/Navbar';
+import "./Theme.css";
+import  Navbar  from './components/navbar/Navbar';
 // import Footer from './components/footer/Footer';
 import { Outlet } from 'react-router-dom';
 import WhatsAppButton from './components/whatsappButton/WhatsButton';

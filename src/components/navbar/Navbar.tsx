@@ -1,67 +1,86 @@
-import React, { useState } from 'react';
-import './Navbar.css';
+import React, { useState } from "react";
+import "./navbar.css";
 
-interface NavbarProps {
-    logoText?: string;
-    contactEmail?: string;
-    menuItems?: Array<{
-        label: string;
-        href: string;
-    }>;
-}
+const Navbar: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-export const Navbar: React.FC<NavbarProps> = ({
-    logoText = "Tu Chiverío",
-    contactEmail = "ventas@tuchiverio.com",
-    menuItems = [
-        { label: "Inicio", href: "#hero" },
-        { label: "Productos", href: "#products" },
-        { label: "Servicios", href: "#services" },
-        { label: "Contacto", href: "#footer" }
-    ]
-}) => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+  return (
+    <header className="header">
+      {/* Logo + Brand */}
+      <div className="navbar-left">
+        <span className="logo">🖥️</span>
+        <span className="brand">Tu Chiverio</span>
+      </div>
 
-    const closeMenu = () => {
-        setIsMenuOpen(false);
-    };
-
-    return (
-        <header className="header">
-            <div className="logo">{logoText}</div>
-            
-            <button 
-                className="menu-toggle" 
-                aria-label="Toggle navigation menu"
-                onClick={toggleMenu}
-            >
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
-            </button>
-
-            <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-                {menuItems.map((item, index) => (
-                    <a 
-                        key={index}
-                        href={item.href}
-                        onClick={closeMenu}
-                    >
-                        {item.label}
-                    </a>
-                ))}
-            </nav>
-            
-            <a 
-                href={`mailto:${contactEmail}`} 
-                className="cta-button"
-            >
-                Contáctanos
+      {/* Links de navegación */}
+      <nav className={`nav-menu desktop`}>
+        <ul className="navbar-links">
+          <li>
+            <a href="#pcs" onClick={handleLinkClick}>
+              De Escritorio
             </a>
-        </header>
-    );
+          </li>
+          <li>
+            <a href="#laptops" onClick={handleLinkClick}>
+              Laptops
+            </a>
+          </li>
+          <li>
+            <a href="#licenses" onClick={handleLinkClick}>
+              Licencias
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Buscador + carrito */}
+      <div className="navbar-right">
+        <div className="search-box">
+          <i className="fas fa-search"></i>
+          <input type="text" placeholder="Search" />
+        </div>
+        <button className="cart-btn">
+          <i className="fas fa-shopping-cart"></i>
+        </button>
+      </div>
+
+      {/* Botón hamburguesa (solo móvil) */}
+      <button
+        className={`menu-toggle ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle navigation menu"
+      >
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </button>
+
+      {/* Menú lateral móvil */}
+      <nav className={`nav-menu side ${menuOpen ? "active" : ""}`}>
+        <ul className="navbar-links">
+          <li>
+            <a href="#pcs" onClick={handleLinkClick}>
+              PCs
+            </a>
+          </li>
+          <li>
+            <a href="#laptops" onClick={handleLinkClick}>
+              Laptops
+            </a>
+          </li>
+          <li>
+            <a href="#licenses" onClick={handleLinkClick}>
+              Licenses
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
 };
+
+export default Navbar;
