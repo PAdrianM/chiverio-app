@@ -1,0 +1,105 @@
+/* --- Estilos del Navbar --- */
+:root {
+    --color-primary: #0a0e2a;
+    --color-secondary: #5a3c9e;
+    --color-accent: #00d4ff;
+    --color-light: #ffffff;
+    --color-dark: #2c2f4a;
+}
+
+/* Encabezado (Header) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: rgba(10, 14, 42, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+}
+
+/* Menú de Navegación */
+.header .nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.header .nav-menu a {
+    color: var(--color-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.header .nav-menu a:hover {
+    color: var(--color-accent);
+}
+
+.header .cta-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.header .cta-button:hover {
+    background-color: var(--color-light);
+}
+
+/* Estilos del botón del menú móvil */
+.menu-toggle {
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-light);
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Media Queries para responsivo */
+@media (max-width: 768px) {
+    .header .nav-menu {
+        display: none; /* OCULTA EL MENÚ POR DEFECTO */
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        width: 100%;
+        background-color: var(--color-dark);
+        padding: 1rem 0;
+        margin-top: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    .header .nav-menu.active {
+        display: flex; /* MUESTRA EL MENÚ CUANDO LA CLASE 'active' ESTÁ PRESENTE */
+    }
+    
+    .menu-toggle {
+        display: block; /* Muestra el botón del menú en móvil */
+    }
+}
