@@ -1,9 +1,11 @@
+import Banner from "../../components/banner/Banner";
+
 const Home = () => {
 return (
     <>
       {/* Sección de Banner */}
       <section id="inicio">
-        {/* <Banner /> */}
+        <Banner />
       </section>
       {/* Sección de Productos */}
       <section id="productos">
