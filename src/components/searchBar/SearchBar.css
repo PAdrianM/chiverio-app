@@ -1,0 +1,20 @@
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-dark);
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+}
+
+.search-box i {
+  margin-right: 6px;
+  color: var(--color-accent);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-light);
+  font-size: 0.9rem;
+}
