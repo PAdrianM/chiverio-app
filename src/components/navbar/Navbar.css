@@ -141,15 +141,45 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Ocultar elementos móviles en desktop */
+.cart-btn-mobile {
+  display: none;
+}
+
 /* --- Responsive --- */
 @media screen and (max-width: 768px) {
   .header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
     padding: 1rem 5%;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
   }
 
-  .cta-button {
-    display: none; /* ocultar en móvil */
+  .navbar-left {
+    order: 2;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cart-btn-mobile {
+    order: 3;
+    justify-self: end;
+    display: block;
+    background-color: var(--color-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    color: var(--color-light);
+    transition: background-color 0.3s;
+  }
+
+  .cart-btn-mobile:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
   }
 
   /* Menú lateral (nuevo estilo) */
@@ -221,11 +251,15 @@
     display: none;
   }
 
+  /* MANTENER: Ocultar elementos desktop en móvil */
+  .cta-button,
   .navbar-right {
     display: none;
   }
 
   .menu-toggle {
+    order: 1;
+    justify-self: start;
     display: block;
   }
 }

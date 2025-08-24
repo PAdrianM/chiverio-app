@@ -1,4 +1,6 @@
 import Banner from "../../components/banner/Banner";
+import CategoriasContainer from "../../components/containers/containerCategories/Container";
+
 
 const Home = () => {
 return (
@@ -9,7 +11,7 @@ return (
       </section>
       {/* Sección de Productos */}
       <section id="productos">
-        {/* <ProductCarousel products={products} /> */}
+        <CategoriasContainer />
       </section>
 
       {/* Sección de Beneficios */}

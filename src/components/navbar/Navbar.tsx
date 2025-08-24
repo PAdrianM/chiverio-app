@@ -10,13 +10,29 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="header">
-      {/* Logo + Brand */}
+      {/* Botón hamburguesa (PRIMERO - izquierda en móvil) */}
+      <button
+        className={`menu-toggle ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle navigation menu"
+      >
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </button>
+
+      {/* Logo + Brand (SEGUNDO - centro en móvil, izquierda en desktop) */}
       <div className="navbar-left">
         <span className="logo">🖥️</span>
         <span className="brand">Tu Chiverio</span>
       </div>
 
-      {/* Links de navegación */}
+      {/* Carrito móvil (TERCERO - derecha en móvil) */}
+      <button className="cart-btn-mobile">
+        <i className="fas fa-shopping-cart"></i>
+      </button>
+
+      {/* Links de navegación (Desktop) */}
       <nav className={`nav-menu desktop`}>
         <ul className="navbar-links">
           <li>
@@ -37,7 +53,7 @@ const Navbar: React.FC = () => {
         </ul>
       </nav>
 
-      {/* Buscador + carrito */}
+      {/* Buscador + carrito (Desktop) */}
       <div className="navbar-right">
         <div className="search-box">
           <i className="fas fa-search"></i>
@@ -47,17 +63,6 @@ const Navbar: React.FC = () => {
           <i className="fas fa-shopping-cart"></i>
         </button>
       </div>
-
-      {/* Botón hamburguesa (solo móvil) */}
-      <button
-        className={`menu-toggle ${menuOpen ? "open" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle navigation menu"
-      >
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-      </button>
 
       {/* Menú lateral móvil */}
       <nav className={`nav-menu side ${menuOpen ? "active" : ""}`}>

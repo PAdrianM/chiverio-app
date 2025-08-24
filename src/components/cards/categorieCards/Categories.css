@@ -1,0 +1,244 @@
+/* ===== CATEGORIES.CSS ===== */
+/* Card base - Estructura principal */
+.category-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(135deg, rgba(42, 45, 58, 0.95), rgba(31, 34, 47, 0.98));
+  color: var(--color-light, #ffffff);
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1.4; /* Cards más anchas por defecto */
+  min-height: 260px; /* Altura mínima para evitar solapamiento */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Imagen de fondo */
+.category-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.7) contrast(1.1);
+  transition: transform 0.5s ease, filter 0.3s ease;
+  z-index: 1;
+}
+
+/* Overlay gradiente para mejor legibilidad */
+.category-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+/* Contenido de la card */
+.category-content {
+  position: relative;
+  padding: 1.5rem;
+  z-index: 3;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 60%,
+    transparent 100%
+  );
+}
+
+/* Precio/Badge superior */
+.category-price {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 212, 255, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 4;
+  backdrop-filter: blur(10px);
+}
+
+/* Título de categoría */
+.category-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-accent, #00d4ff);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+/* Descripción */
+.category-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+/* HOVER EFFECTS */
+.category-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 212, 255, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.1);
+  filter: brightness(0.9) contrast(1.2);
+}
+
+.category-card:hover::before {
+  opacity: 0.7;
+}
+
+.category-card:hover h3 {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+
+/* Desktop grande */
+@media (min-width: 1200px) {
+  .categories-container {
+    max-width: 1400px; /* Aún más ancho en pantallas grandes */
+    gap: 3rem; /* Más separación */
+  }
+  
+  .category-card {
+    aspect-ratio: 1.6; /* Aún más anchas en desktop grande */
+    min-height: 300px; /* Más altura para evitar problemas */
+  }
+  
+  .category-content {
+    padding: 2rem;
+  }
+  
+  .category-card h3 {
+    font-size: 1.6rem;
+  }
+  
+  .category-card p {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .category-content {
+    padding: 1.25rem;
+  }
+  
+  .category-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .category-card p {
+    font-size: 0.9rem;
+  }
+  
+  .category-price {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .category-card {
+    aspect-ratio: 1.1; /* Ligeramente más altas en móvil */
+    border-radius: 12px;
+  }
+  
+  .category-content {
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .category-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .category-card p {
+    font-size: 0.85rem;
+  }
+  
+  .category-price {
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Hover más sutil en móvil */
+  .category-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 480px) {
+  .category-card {
+    aspect-ratio: 1.2;
+  }
+  
+  .category-content {
+    padding: 0.75rem;
+  }
+  
+  .category-card h3 {
+    font-size: 1rem;
+  }
+  
+  .category-card p {
+    font-size: 0.8rem;
+  }
+}
+
+/* ACCESIBILIDAD */
+.category-card:focus {
+  outline: 2px solid var(--color-accent, #00d4ff);
+  outline-offset: 2px;
+}
+
+/* 🔹 REDUCIR ANIMACIONES si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .category-card,
+  .category-image,
+  .category-card::before {
+    transition: none;
+  }
+  
+  .category-card:hover {
+    transform: none;
+  }
+  
+  .category-card:hover .category-image {
+    transform: none;
+  }
+}
