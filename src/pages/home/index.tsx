@@ -1,6 +1,8 @@
 import Banner from "../../components/banner/Banner";
 import CategoriasContainer from "../../components/containers/containerCategories/Container";
 import PromoBanner from "../../components/banner/bannerPromotional/PromoBanner";
+import AboutUs from "../../components/aboutUs/AboutUs";
+
 
 
 const Home = () => {
@@ -10,8 +12,8 @@ return (
       <section id="inicio">
         <Banner />
       </section>
-      {/* Sección de Productos */}
-      <section id="productos">
+      {/* Sección de Categorias */}
+      <section id="categorias">
         <CategoriasContainer />
       </section>
 
@@ -20,9 +22,9 @@ return (
         <PromoBanner />
       </section>
 
-      {/* Sección de Contacto (Formulario) */}
-      <section id="contacto">
-        {/* <CotizaForm /> */}
+      {/* Sección de Contacto AboutUs */}
+      <section id="about-us">
+        <AboutUs />
       </section>
     </>
   );

@@ -101,7 +101,7 @@
 }
 
 /* Laptop Gamer Design */
-.laptop-container {
+.promo-laptop-container {
   position: static;
   width: 200px;
   height: 140px;
@@ -463,7 +463,7 @@
     order: -1;
   }
 
-  .laptop-container {
+  .promo-laptop-container {
     width: 160px;
     height: 110px;
   }

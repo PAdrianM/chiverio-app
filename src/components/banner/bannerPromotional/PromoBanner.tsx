@@ -17,7 +17,7 @@ const PromoBanner: React.FC = () => {
             <button className="promo-banner__button">Ver disponibles</button>
           </div>
           <div className="promo-banner__visual">
-            <div className="laptop-container">
+            <div className="promo-laptop-container">
               {/* Laptop Base */}
               <div className="laptop-base">
                 <div className="laptop-keyboard">
