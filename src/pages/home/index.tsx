@@ -1,5 +1,6 @@
 import Banner from "../../components/banner/Banner";
 import CategoriasContainer from "../../components/containers/containerCategories/Container";
+import PromoBanner from "../../components/banner/bannerPromotional/PromoBanner";
 
 
 const Home = () => {
@@ -14,9 +15,9 @@ return (
         <CategoriasContainer />
       </section>
 
-      {/* Sección de Beneficios */}
-      <section id="beneficios">
-        {/* <Beneficios /> */}
+      {/* Sección de Banner Promocional */}
+      <section id="banner-promocional">
+        <PromoBanner />
       </section>
 
       {/* Sección de Contacto (Formulario) */}
