@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar: React.FC = () => {
@@ -22,10 +23,12 @@ const Navbar: React.FC = () => {
       </button>
 
       {/* Logo + Brand (SEGUNDO - centro en móvil, izquierda en desktop) */}
-      <div className="navbar-left">
-        <span className="logo">🖥️</span>
-        <span className="brand">Tu Chiverio</span>
-      </div>
+    
+        <Link to="/" className="navbar-left" onClick={handleLinkClick}>
+          <span className="logo">🖥️</span>
+          <span className="brand">Tu Chiverio</span>
+        </Link>
+      
 
       {/* Carrito móvil (TERCERO - derecha en móvil) */}
       <button className="cart-btn-mobile">
@@ -36,19 +39,19 @@ const Navbar: React.FC = () => {
       <nav className={`nav-menu desktop`}>
         <ul className="navbar-links">
           <li>
-            <a href="#pcs" onClick={handleLinkClick}>
+            <Link to="/pc" onClick={handleLinkClick}>
               De Escritorio
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#laptops" onClick={handleLinkClick}>
+            <Link to="/laptops" onClick={handleLinkClick}>
               Laptops
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#licenses" onClick={handleLinkClick}>
+            <Link to="/licencias" onClick={handleLinkClick}>
               Licencias
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -68,19 +71,19 @@ const Navbar: React.FC = () => {
       <nav className={`nav-menu side ${menuOpen ? "active" : ""}`}>
         <ul className="navbar-links">
           <li>
-            <a href="#pcs" onClick={handleLinkClick}>
-              PCs
-            </a>
+            <Link to="/pc" onClick={handleLinkClick}>
+              De Escritorio
+            </Link>
           </li>
           <li>
-            <a href="#laptops" onClick={handleLinkClick}>
+            <Link to="/laptops" onClick={handleLinkClick}>
               Laptops
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#licenses" onClick={handleLinkClick}>
-              Licenses
-            </a>
+            <Link to="/licencias" onClick={handleLinkClick}>
+              Licencias
+            </Link>
           </li>
         </ul>
       </nav>

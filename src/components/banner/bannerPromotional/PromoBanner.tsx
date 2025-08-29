@@ -39,7 +39,7 @@ const PromoBanner: React.FC = () => {
               </div>
 
               {/* Laptop Screen */}
-              <div className="laptop-screen">
+              <div className="promo-laptop-screen">
                 <div className="screen-frame">
                   <div className="screen-content">
                     {/* Tu Chiverio Logo integrado en la pantalla */}

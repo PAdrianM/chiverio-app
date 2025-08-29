@@ -181,7 +181,7 @@
   animation: trackpadGlow 3s ease-in-out infinite;
 }
 
-.laptop-screen {
+.promo-laptop-screen {
   position: absolute;
   top: 0;
   left: 50%;
@@ -478,7 +478,7 @@
     height: 14px;
   }
 
-  .laptop-screen {
+  .promo-laptop-screen {
     width: 130px;
     height: 80px;
   }
