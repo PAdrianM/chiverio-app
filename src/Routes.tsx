@@ -8,7 +8,7 @@ import BlankLayout from './BlankLayout';
 
 const Routes = () => {
     return (
-        <Router basename={import.meta.env.DEV ? "/" : "/chiverio-app"}>
+        <Router>
             <RouterRoutes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<Home />} />
