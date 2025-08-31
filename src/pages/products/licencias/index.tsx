@@ -1,11 +1,13 @@
-import React from 'react';
 import './Licencia.css';
+import CategoriasProduct from "../../../components/containers/containerProducts/ContainerProduct";
 
-const Licencias: React.FC = () => {
+const Licencias = () => {
     return (
-        <div className="licencias">
-            <h1>Licencias</h1>
-        </div>
+        <>
+      <section id="categorias">
+        <CategoriasProduct categoryTitle="Licencias" />
+      </section>
+    </>
     );
 }
 

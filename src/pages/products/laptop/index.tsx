@@ -1,12 +1,14 @@
-import React from 'react';
-import './Laptop.css';
+import "./Laptop.css";
+import CategoriasProduct from "../../../components/containers/containerProducts/ContainerProduct";
 
-const Laptop: React.FC = () => {
-    return (
-        <div className="laptop">
-            <h1>Laptop</h1>
-        </div>
-    );
-}
+const Laptop = () => {
+  return (
+    <>
+      <section id="categorias">
+        <CategoriasProduct categoryTitle="Laptops" />
+      </section>
+    </>
+  );
+};
 
 export default Laptop;

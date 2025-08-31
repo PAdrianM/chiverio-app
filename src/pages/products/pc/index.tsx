@@ -1,11 +1,14 @@
-import React from 'react';
 import './Pc.css';
+import CategoriasProduct from "../../../components/containers/containerProducts/ContainerProduct";
 
-const Pc: React.FC = () => {
+
+const Pc = () => {
     return (
-        <div className="pc">
-            <h1>PC Products</h1>
-        </div>
+        <>
+      <section id="categorias">
+        <CategoriasProduct categoryTitle="PC" />
+      </section>
+    </>
     );
 }
 
