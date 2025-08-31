@@ -10,25 +10,25 @@ const categoriesData = [
   {
     title: "PCs",
     description: "Armamos tu PC ideal con los componentes de tu preferencia. También vendemos computadoras de escritorio de tus marcas preferidas.",
-    link: "/categories/pcs",
+    link: "/pc",
     image: pcImage,
   },
   {
     title: "Laptops", 
     description: "Potencia y portabilidad en un solo dispositivo, ideal para trabajar y jugar. Te ofrecemos las mejores marcas del mercado, DELL, HP, ASUS.",
-    link: "/categories/laptops",
+    link: "/laptops",
     image: laptopImage,
   },
   {
     title: "Licencias",
     description: "Software original para productividad y seguridad.",
-    link: "/categories/licencias",
+    link: "/licencias",
     image: licencesImage,
   },
   {
     title: "Servicios",
     description: "Mantenimiento, soporte y asesoría profesional.",
-    link: "/categories/servicios",
+    link: "/servicios",
     image: serviceImage,
   },
 ];

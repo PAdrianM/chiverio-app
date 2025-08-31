@@ -15,6 +15,7 @@ const Routes = () => {
                     <Route path="/pc" element={<PC />} />
                     <Route path="/laptops" element={<Laptops />} />
                     <Route path="/licencias" element={<Licencias />} />
+                    {/* <Route path="/servicios" element={<Servicios />} /> */}
                 </Route>
                 <Route element={<BlankLayout />}>
                     {/* <Route path="/thanks" element={<Thanks />} /> */}
