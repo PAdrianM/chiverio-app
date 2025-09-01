@@ -38,9 +38,14 @@ const Navbar: React.FC = () => {
       {/* Links de navegación (Desktop) */}
       <nav className={`nav-menu desktop`}>
         <ul className="navbar-links">
+           <li>
+            <Link to="/" onClick={handleLinkClick}>
+              Inicio
+            </Link>
+          </li>
           <li>
             <Link to="/pc" onClick={handleLinkClick}>
-              De Escritorio
+              Computadoras
             </Link>
           </li>
           <li>
@@ -71,8 +76,19 @@ const Navbar: React.FC = () => {
       <nav className={`nav-menu side ${menuOpen ? "active" : ""}`}>
         <ul className="navbar-links">
           <li>
+            <Link to="/" className="navbar-left" onClick={handleLinkClick}>
+              <span className="logo">🖥️</span>
+              <span className="brand">Tu Chiverio</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/" onClick={handleLinkClick}>
+              Inicio
+            </Link>
+          </li>
+          <li>
             <Link to="/pc" onClick={handleLinkClick}>
-              De Escritorio
+              Computadoras
             </Link>
           </li>
           <li>
