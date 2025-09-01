@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Product.css';
 
 interface ProductProps {
@@ -18,10 +19,18 @@ const Product: React.FC<ProductProps> = ({
   category,
   onAddToCart
 }) => {
-  const handleAddToCart = () => {
+  const navigate = useNavigate();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Evitar que se dispare el click del card
     if (onAddToCart) {
       onAddToCart(id);
     }
+  };
+
+  const handleCardClick = () => {
+    // Navegar a la página de detalle con el ID del producto
+    navigate(`/product/${id}`);
   };
 
   const formatPrice = (price: number) => {
@@ -32,14 +41,14 @@ const Product: React.FC<ProductProps> = ({
   };
 
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleCardClick}>
       <div className="product-card__decoration">
         <div className="decoration-glow"></div>
       </div>
       
       <div className="product-card__image-container">
         <img 
-          src={image} 
+          src={image}
           alt={name}
           className="product-card__image"
         />
