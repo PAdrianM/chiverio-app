@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Product from '../../cards/productCard/Product';
+import type { ProductData } from '../../../pages/home/productServices';
+import { productService } from '../../../pages/home/productServices';
+import type { ProductCategory } from '../../../pages/home/productServices';
 import './ContainerProduct.css';
-import img1 from '../../../assets/img/demoImg/img-demo.jpeg';
-import img2 from '../../../assets/img/demoImg/img-demo1.jpeg';
-
-interface ProductData {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-  description?: string;
-}
 
 interface ContainerProductProps {
   categoryTitle: string;
   apiEndpoint?: string;
   itemsPerPage?: number;
-  category?: string;
+  category?: ProductCategory;
 }
 
 const ContainerProduct: React.FC<ContainerProductProps> = ({
   categoryTitle,
-  apiEndpoint,
+  // apiEndpoint,
   itemsPerPage = 10,
   category
 }) => {
@@ -32,170 +24,45 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [totalProducts, setTotalProducts] = useState(0);
 
-  // Dummy data para MUESTRA
-  const dummyProducts: ProductData[] = [
-    {
-      id: '1',
-      name: 'UltraBook Pro 15',
-      price: 1299,
-      image: 'https://i.pinimg.com/736x/b4/d2/2d/b4d22dd613d4526976ed60deab69c023.jpg',
-      category: 'Laptops',
-      description: 'High-performance laptop for professionals'
-    },
-    {
-      id: '2',
-      name: 'PowerBook X17',
-      price: 1799,
-      image: 'https://i.pinimg.com/1200x/09/51/ee/0951ee936783e1d82dcdc6a452b7088a.jpg',
-      category: 'Laptops',
-      description: 'Ultimate gaming and productivity machine'
-    },
-    {
-      id: '3',
-      name: 'AirBook 13',
-      price: 999,
-      image: 'https://i.pinimg.com/736x/db/81/62/db8162ce6df91b1f126a9e02ab9bb86d.jpg',
-      category: 'Laptops',
-      description: 'Lightweight and portable for everyday use'
-    },
-    {
-      id: '4',
-      name: 'ZenBook S',
-      price: 1499,
-      image: 'https://i.pinimg.com/736x/03/41/b2/0341b26171567f501c90dab8fd0a93a3.jpg',
-      category: 'Laptops',
-      description: 'Premium design meets powerful performance'
-    },
-    {
-      id: '5',
-      name: 'EliteBook 840',
-      price: 1199,
-      image: 'https://i.pinimg.com/736x/48/f6/2e/48f62e300e0bc7a4f4ba1595a6d0c51f.jpg',
-      category: 'Laptops',
-      description: 'Business-grade reliability and security'
-    },
-    {
-      id: '6',
-      name: 'ThinkPad T14',
-      price: 1399,
-      image: 'https://i.pinimg.com/1200x/57/81/55/578155e45f97024bd1d11c3e6dec5ebe.jpg',
-      category: 'Laptops',
-      description: 'Legendary ThinkPad reliability'
-    },
-    {
-      id: '7',
-      name: 'Spectre x360',
-      price: 1599,
-      image: 'https://i.pinimg.com/736x/19/48/9a/19489a25dcfe9bc27b5a3c0e8c8d9d73.jpg',
-      category: 'Laptops',
-      description: '2-in-1 convertible with premium features'
-    },
-    {
-      id: '8',
-      name: 'Latitude 5520',
-      price: 1099,
-      image: 'https://i.pinimg.com/1200x/6b/79/85/6b79850524ea93b3612e2401ab91b3f3.jpg',
-      category: 'Laptops',
-      description: 'Reliable business laptop with great battery life'
-    },
-    {
-      id: '9',
-      name: 'Surface Laptop 4',
-      price: 1699,
-      image: img1,
-      category: 'Laptops',
-      description: 'Microsoft Surface elegance and performance'
-    },
-    {
-      id: '10',
-      name: 'MacBook Pro 16',
-      price: 2399,
-      image: img2,
-      category: 'Laptops',
-      description: 'Apple M1 Pro chip with incredible performance'
-    },
-    {
-      id: '11',
-      name: 'XPS 13',
-      price: 1099,
-      image: '/images/laptop-11.jpg',
-      category: 'Laptops',
-      description: 'Dell XPS premium ultrabook'
-    },
-    {
-      id: '12',
-      name: 'IdeaPad Flex 5',
-      price: 799,
-      image: '/images/laptop-12.jpg',
-      category: 'Laptops',
-      description: 'Flexible 2-in-1 design at great value'
-    },
-    {
-      id: '11',
-      name: 'XPS 13',
-      price: 1099,
-      image: '/images/laptop-11.jpg',
-      category: 'Laptops',
-      description: 'Dell XPS premium ultrabook'
-    },
-    {
-      id: '12',
-      name: 'IdeaPad Flex 5',
-      price: 799,
-      image: '/images/laptop-12.jpg',
-      category: 'Laptops',
-      description: 'Flexible 2-in-1 design at great value'
-    }
-  ];
-
-  // Función para consumir API la puedes cambiar si queres
+  // Función para obtener productos usando el servicio
   const fetchProducts = async (page: number) => {
-    if (!apiEndpoint) {
-      // Usar dummy data si no hay endpoint
-      setLoading(true);
-      
-      // Pequeño delay de carga de la API
-      setTimeout(() => {
-        const startIndex = (page - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const paginatedProducts = dummyProducts.slice(startIndex, endIndex);
-        
-        setProducts(paginatedProducts);
-        setTotalProducts(dummyProducts.length);
-        setLoading(false);
-      }, 500);
-      
-      return;
-    }
-
     try {
       setLoading(true);
       setError(null);
 
-      // Implementación para axios (descomentar cuando esté listo)
-      /*
-      const response = await axios.get(`${apiEndpoint}`, {
-        params: {
-          page,
-          limit: itemsPerPage,
-          category: category || undefined
-        }
-      });
-
-      setProducts(response.data.products || response.data);
-      setTotalProducts(response.data.total || response.data.length);
-      */
+      let result;
+      
+      if (category) {
+        // Si hay categoría específica, usar paginación con filtro
+        result = await productService.getProductsWithPagination(
+          page, 
+          itemsPerPage, 
+          category
+        );
+        setProducts(result.products);
+        setTotalProducts(result.total);
+      } else {
+        // Si no hay categoría, obtener todos los productos con paginación
+        result = await productService.getProductsWithPagination(
+          page, 
+          itemsPerPage
+        );
+        setProducts(result.products);
+        setTotalProducts(result.total);
+      }
 
       setLoading(false);
     } catch (err: any) {
       setError(err.message || 'Error al cargar productos');
+      setProducts([]);
+      setTotalProducts(0);
       setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchProducts(currentPage);
-  }, [currentPage, apiEndpoint, category]);
+  }, [currentPage, category]);
 
   const totalPages = Math.ceil(totalProducts / itemsPerPage);
 
@@ -207,22 +74,25 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
     }
   };
 
-  const handleAddToCart = (productId: string) => {
-    // Implementar lógica de carrito aquí
-    console.log('Añadir al carrito:', productId);
-    
-    // Ejemplo de implementación futura:
-    /*
+  const handleAddToCart = async (productId: string) => {
     try {
-      await addToCartAPI(productId);
-      // Mostrar notificación de éxito
-    } catch (error) {
+      await productService.addToCart(productId, 1);
+      console.log('Producto añadido al carrito:', productId);
+      
+      // Aquí puedes agregar lógica adicional como:
+      // - Mostrar notificación de éxito
+      // - Actualizar contador del carrito
+      // - Actualizar estado global del carrito
+      
+    } catch (error: any) {
+      console.error('Error al añadir al carrito:', error.message);
       // Mostrar notificación de error
     }
-    */
   };
 
   const renderPagination = () => {
+    if (totalPages <= 1) return null;
+
     const visiblePages = [];
     const maxVisiblePages = 5;
     
@@ -308,17 +178,22 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       ) : (
         <>
           <div className="container-product__grid">
-            {products.map((product) => (
-              <Product
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                image={product.image}
-                category={product.category}
-                onAddToCart={handleAddToCart}
-              />
-            ))}
+            {products.map((product) => {
+              // Obtener la imagen principal
+              const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
+              
+              return (
+                <Product
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  price={product.price}
+                  image={primaryImage?.url || '/images/placeholder.jpg'}
+                  category={product.category}
+                  onAddToCart={handleAddToCart}
+                />
+              );
+            })}
           </div>
 
           {products.length === 0 && !loading && (
@@ -327,7 +202,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
             </div>
           )}
 
-          {totalPages > 1 && renderPagination()}
+          {renderPagination()}
         </>
       )}
     </section>
