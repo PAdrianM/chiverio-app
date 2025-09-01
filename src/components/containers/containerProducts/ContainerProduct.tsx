@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Product from '../../cards/productCard/Product';
 import './ContainerProduct.css';
+import img1 from '../../../assets/img/demoImg/img-demo.jpeg';
+import img2 from '../../../assets/img/demoImg/img-demo1.jpeg';
 
 interface ProductData {
   id: string;
@@ -36,7 +38,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '1',
       name: 'UltraBook Pro 15',
       price: 1299,
-      image: '/images/laptop-1.jpg',
+      image: 'https://i.pinimg.com/736x/b4/d2/2d/b4d22dd613d4526976ed60deab69c023.jpg',
       category: 'Laptops',
       description: 'High-performance laptop for professionals'
     },
@@ -44,7 +46,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '2',
       name: 'PowerBook X17',
       price: 1799,
-      image: '/images/laptop-2.jpg',
+      image: 'https://i.pinimg.com/1200x/09/51/ee/0951ee936783e1d82dcdc6a452b7088a.jpg',
       category: 'Laptops',
       description: 'Ultimate gaming and productivity machine'
     },
@@ -52,7 +54,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '3',
       name: 'AirBook 13',
       price: 999,
-      image: '/images/laptop-3.jpg',
+      image: 'https://i.pinimg.com/736x/db/81/62/db8162ce6df91b1f126a9e02ab9bb86d.jpg',
       category: 'Laptops',
       description: 'Lightweight and portable for everyday use'
     },
@@ -60,7 +62,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '4',
       name: 'ZenBook S',
       price: 1499,
-      image: '/images/laptop-4.jpg',
+      image: 'https://i.pinimg.com/736x/03/41/b2/0341b26171567f501c90dab8fd0a93a3.jpg',
       category: 'Laptops',
       description: 'Premium design meets powerful performance'
     },
@@ -68,7 +70,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '5',
       name: 'EliteBook 840',
       price: 1199,
-      image: '/images/laptop-5.jpg',
+      image: 'https://i.pinimg.com/736x/48/f6/2e/48f62e300e0bc7a4f4ba1595a6d0c51f.jpg',
       category: 'Laptops',
       description: 'Business-grade reliability and security'
     },
@@ -76,7 +78,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '6',
       name: 'ThinkPad T14',
       price: 1399,
-      image: '/images/laptop-6.jpg',
+      image: 'https://i.pinimg.com/1200x/57/81/55/578155e45f97024bd1d11c3e6dec5ebe.jpg',
       category: 'Laptops',
       description: 'Legendary ThinkPad reliability'
     },
@@ -84,7 +86,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '7',
       name: 'Spectre x360',
       price: 1599,
-      image: '/images/laptop-7.jpg',
+      image: 'https://i.pinimg.com/736x/19/48/9a/19489a25dcfe9bc27b5a3c0e8c8d9d73.jpg',
       category: 'Laptops',
       description: '2-in-1 convertible with premium features'
     },
@@ -92,7 +94,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '8',
       name: 'Latitude 5520',
       price: 1099,
-      image: '/images/laptop-8.jpg',
+      image: 'https://i.pinimg.com/1200x/6b/79/85/6b79850524ea93b3612e2401ab91b3f3.jpg',
       category: 'Laptops',
       description: 'Reliable business laptop with great battery life'
     },
@@ -100,7 +102,7 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '9',
       name: 'Surface Laptop 4',
       price: 1699,
-      image: '/images/laptop-9.jpg',
+      image: img1,
       category: 'Laptops',
       description: 'Microsoft Surface elegance and performance'
     },
@@ -108,9 +110,25 @@ const ContainerProduct: React.FC<ContainerProductProps> = ({
       id: '10',
       name: 'MacBook Pro 16',
       price: 2399,
-      image: '/images/laptop-10.jpg',
+      image: img2,
       category: 'Laptops',
       description: 'Apple M1 Pro chip with incredible performance'
+    },
+    {
+      id: '11',
+      name: 'XPS 13',
+      price: 1099,
+      image: '/images/laptop-11.jpg',
+      category: 'Laptops',
+      description: 'Dell XPS premium ultrabook'
+    },
+    {
+      id: '12',
+      name: 'IdeaPad Flex 5',
+      price: 799,
+      image: '/images/laptop-12.jpg',
+      category: 'Laptops',
+      description: 'Flexible 2-in-1 design at great value'
     },
     {
       id: '11',

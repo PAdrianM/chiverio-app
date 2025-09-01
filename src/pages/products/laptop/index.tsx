@@ -1,11 +1,15 @@
 import "./Laptop.css";
-import CategoriasProduct from "../../../components/containers/containerProducts/ContainerProduct";
+import ContainerProduct from "../../../components/containers/containerProducts/ContainerProduct";
 
 const Laptop = () => {
   return (
     <>
       <section id="categorias">
-        <CategoriasProduct categoryTitle="Laptops" />
+        <ContainerProduct 
+          categoryTitle="Laptops" 
+          category="Laptops"
+          itemsPerPage={12}
+        />
       </section>
     </>
   );

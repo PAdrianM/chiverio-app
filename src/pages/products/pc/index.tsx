@@ -1,15 +1,18 @@
-import './Pc.css';
-import CategoriasProduct from "../../../components/containers/containerProducts/ContainerProduct";
+import "./Pc.css";
+import ContainerProduct from "../../../components/containers/containerProducts/ContainerProduct";
 
-
-const Pc = () => {
-    return (
-        <>
+const PC = () => {
+  return (
+    <>
       <section id="categorias">
-        <CategoriasProduct categoryTitle="PC" />
+        <ContainerProduct 
+          categoryTitle="Computadoras de Escritorio" 
+          category="PC"
+          itemsPerPage={12}
+        />
       </section>
     </>
-    );
-}
+  );
+};
 
-export default Pc;
+export default PC;
